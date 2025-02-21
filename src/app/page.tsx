@@ -27,7 +27,7 @@ export default async function Home() {
             >
               <h3 className="text-2xl font-bold">GitHub Repository →</h3>
               <div className="text-lg">
-                Our private repo for the CS-212 A3-Storefront project. Make sure you're logged in!
+                Our private repo for the CS-212 A3-Storefront project. Make sure you are logged in!
               </div>
             </Link>
             <Link
