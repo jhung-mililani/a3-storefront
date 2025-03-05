@@ -1,8 +1,8 @@
 // For page.tsx
 "use client";
 
-import { useState } from "react";
 import { X } from "lucide-react";
+import { useState } from "react";
 
 export function ShippingBanner() {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
@@ -20,17 +20,19 @@ export function ShippingBanner() {
   }
 
   return (
-    <div 
-      className={`w-full bg-primary px-4 py-3 text-primary-foreground relative transition-all duration-300 ease-in-out ${
-        isDismissing ? "opacity-0 max-h-0 py-0 overflow-hidden" : "opacity-100 max-h-20"
+    <div
+      className={`relative w-full bg-primary px-4 py-3 text-primary-foreground transition-all duration-300 ease-in-out ${
+        isDismissing
+          ? "max-h-0 overflow-hidden py-0 opacity-0"
+          : "max-h-20 opacity-100"
       }`}
     >
       <div className="text-center text-sm">
-        Free shipping on orders over $100 • Use code WELCOME10 for 10% off
-        your first order
+        Free shipping on orders over $100 • Use code WELCOME10 for 10% off your
+        first order
       </div>
-      <button 
-        onClick={dismissBanner} 
+      <button
+        onClick={dismissBanner}
         className="absolute left-4 top-1/2 -translate-y-1/2"
         aria-label="Dismiss banner"
       >

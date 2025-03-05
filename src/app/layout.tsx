@@ -32,6 +32,7 @@ const apercu = localFont({
 });
 
 import { TRPCReactProvider } from "~/trpc/react";
+import Header from "./(main)/_components/header";
 
 export const metadata: Metadata = {
   title: "Brave Graves",
@@ -46,7 +47,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${apercu.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Header />
+          {children}
+        </TRPCReactProvider>
       </body>
     </html>
   );

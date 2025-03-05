@@ -1,19 +1,19 @@
-import Header from "~/app/(main)/_components/header"
-import Hero from "~/app/(main)/_components/hero"
-import ProductCarousel from "~/app/(main)/_components/product-carousel"
-import FeaturedSection from "~/app/(main)/_components/featured-section"
-import ContentSection from "~/app/(main)/_components/content-section"
-import { ShippingBanner } from "./_components/discount-banner"
+import ContentSection from "~/app/(main)/_components/content-section";
+import FeaturedSection from "~/app/(main)/_components/featured-section";
+import Hero from "~/app/(main)/_components/hero";
+import ProductCarousel from "~/app/(main)/_components/product-carousel";
+import { ShippingBanner } from "./_components/discount-banner";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Header />
       <ShippingBanner />
       <Hero />
       <ProductCarousel />
-      <FeaturedSection />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto px-4 py-16">
+      <div id="featured">
+        <FeaturedSection />
+      </div>
+      <div className="container mx-auto grid grid-cols-1 gap-8 px-4 py-16 md:grid-cols-2">
         <ContentSection
           title="Our Story"
           description="Discover our journey and what makes us unique in the industry. We've been crafting quality products since 2010."
@@ -24,5 +24,5 @@ export default function Home() {
         />
       </div>
     </main>
-  )
+  );
 }
