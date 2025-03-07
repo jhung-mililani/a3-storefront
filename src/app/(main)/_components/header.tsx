@@ -58,6 +58,7 @@ export default function Header() {
         </div>
 
         {/* center section (logo) */}
+        {/* TODO: make logo smaller on small screens */}
         <div className="flex w-1/3 justify-center">
           {isHomePage ? (
             <div className="h-5 overflow-hidden font-bold">
