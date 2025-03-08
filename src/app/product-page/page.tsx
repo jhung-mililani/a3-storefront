@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Star, ShoppingCart, ChevronDown, ChevronUp } from "lucide-react"
+import { Star, ShoppingCart, Minus, Plus } from "lucide-react"
 import { useState } from "react"
 
 import { Button } from "~/components/ui/button"
@@ -11,6 +11,7 @@ import { Badge } from "~/components/ui/badge"
 
 export default function ProductPage() {
   const [quantity, setQuantity] = useState(1)
+  const [selectedColor, setSelectedColor] = useState("black")
 
   const incrementQuantity = () => {
     setQuantity((prev) => prev + 1)
@@ -108,21 +109,40 @@ export default function ProductPage() {
               <div>
                 <h3 className="font-medium mb-2">Color</h3>
                 <div className="flex gap-2">
-                  <button className="w-8 h-8 rounded-full bg-black ring-2 ring-primary ring-offset-2"></button>
-                  <button className="w-8 h-8 rounded-full bg-white border"></button>
-                  <button className="w-8 h-8 rounded-full bg-red-500"></button>
-                  <button className="w-8 h-8 rounded-full bg-blue-500"></button>
+                  <button
+                    className={`w-8 h-8 rounded-full bg-black ${selectedColor === "black" ? "ring-2 ring-primary ring-offset-2" : ""}`}
+                    onClick={() => setSelectedColor("black")}
+                    aria-label="Black"
+                  ></button>
+                  <button
+                    className={`w-8 h-8 rounded-full bg-white border ${selectedColor === "white" ? "ring-2 ring-primary ring-offset-2" : ""}`}
+                    onClick={() => setSelectedColor("white")}
+                    aria-label="White"
+                  ></button>
+                  <button
+                    className={`w-8 h-8 rounded-full bg-red-500 ${selectedColor === "red" ? "ring-2 ring-primary ring-offset-2" : ""}`}
+                    onClick={() => setSelectedColor("red")}
+                    aria-label="Red"
+                  ></button>
+                  <button
+                    className={`w-8 h-8 rounded-full bg-blue-500 ${selectedColor === "blue" ? "ring-2 ring-primary ring-offset-2" : ""}`}
+                    onClick={() => setSelectedColor("blue")}
+                    aria-label="Blue"
+                  ></button>
+                </div>
+                <div className="text-sm text-muted-foreground mt-2">
+                  {selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}
                 </div>
               </div>
               <div>
                 <h3 className="font-medium mb-2">Quantity</h3>
                 <div className="flex items-center">
                   <Button variant="outline" size="icon" onClick={decrementQuantity} disabled={quantity <= 1}>
-                    <ChevronDown className="h-4 w-4" />
+                    <Minus className="h-4 w-4" />
                   </Button>
                   <span className="w-12 text-center">{quantity}</span>
                   <Button variant="outline" size="icon" onClick={incrementQuantity}>
-                    <ChevronUp className="h-4 w-4" />
+                    <Plus className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
