@@ -74,3 +74,12 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Product {
+  id        Int     @id @default(autoincrement())
+  name      String
+  price     Decimal
+  image     String
+  createdAt DateTime @default(now())
+}
+
