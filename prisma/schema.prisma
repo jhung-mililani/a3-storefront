@@ -80,6 +80,9 @@ model Product {
   name      String
   price     Decimal
   image     String
+  Stock     Int 
+  Sales     Int 
+  Discont   Int
   createdAt DateTime @default(now())
 }
 
