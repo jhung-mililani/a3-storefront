@@ -1,28 +1,30 @@
 import "~/styles/globals.css";
-
-// import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import localFont from "next/font/local";
+import { TRPCReactProvider } from "~/trpc/react";
+
+import { CartProvider } from "./context/CartContext"; // <-- Ajusta si tu "context" está en /app/context
+import Header from "./(main)/_components/header";      // <-- Ajusta la ruta si tu header está en esta carpeta
 
 const apercu = localFont({
   src: [
     {
-      path: "../../public/fonts/apercu-regular-pro.ttf",
+      path: "../fonts/apercu-regular-pro.ttf", // ✅ subir un nivel
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/apercu-italic-pro.ttf",
+      path: "../fonts/apercu-italic-pro.ttf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "../../public/fonts/apercu-bold-pro.ttf",
+      path: "../fonts/apercu-bold-pro.ttf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../../public/fonts/apercu-bold-italic-pro.ttf",
+      path: "../fonts/apercu-bold-italic-pro.ttf",
       weight: "700",
       style: "italic",
     },
@@ -31,13 +33,12 @@ const apercu = localFont({
   variable: "--font-apercu",
 });
 
-import { TRPCReactProvider } from "~/trpc/react";
-import Header from "./(main)/_components/header";
+
 
 export const metadata: Metadata = {
   title: "Brave Graves",
   description:
-    "Elevate your eternal resting place with the premier global platform for luxury burial plots, artisan headstones, and premium memorials. Honoring legacies with elegance and distinction.",
+    "Elevate your eternal resting place with the premier global platform for luxury burial plots...",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -45,12 +46,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${apercu.variable}`}>
+    <html lang="en" className={apercu.variable}>
       <body>
-        <TRPCReactProvider>
-          <Header />
-          {children}
-        </TRPCReactProvider>
+        <CartProvider>
+          <TRPCReactProvider>
+            <Header />
+            {children}
+          </TRPCReactProvider>
+        </CartProvider>
       </body>
     </html>
   );

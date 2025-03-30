@@ -76,14 +76,18 @@ model VerificationToken {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  price       Decimal  @db.Decimal(10, 2)
-  image       String
-  stock       Int      @default(0)
-  sales       Int      @default(0)
-  discount    Int      @default(0)
-  createdAt   DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  name         String
+  price        Decimal  @db.Decimal(10, 2)
+  image        String
+  stock        Int      @default(0)
+  sales        Int      @default(0)
+  discount     Int      @default(0)
+  description  String   @default("")
+  comments     String[] 
+  rating       Int      @default(0) 
+  reviewCount  Int      @default(0) 
+  createdAt    DateTime @default(now())
 }
 
 
