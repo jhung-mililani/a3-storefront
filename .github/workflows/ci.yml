@@ -1,4 +1,6 @@
 name: CI
+permissions:
+  contents: read
 on: [push]
 jobs:
   lhci:
@@ -14,6 +16,12 @@ jobs:
         run: |
           npm install
           npm run build
+        env:
+          # github secrets through preview environment
+          AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+          AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.14.x
