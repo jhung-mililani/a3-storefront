@@ -5,7 +5,7 @@ import { Menu, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "~/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "~/components/ui/sheet";
 
 export default function Header() {
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -128,7 +128,11 @@ export default function Header() {
                       ${(99.99 * cartCount).toFixed(2)}
                     </span>
                   </div>
-                  <Button className="w-full">Checkout</Button>
+                  <SheetClose asChild>
+                    <Link href="/checkout">
+                      <Button className="w-full">Checkout</Button>
+                    </Link>
+                  </SheetClose>
                 </div>
               </div>
             </SheetContent>
