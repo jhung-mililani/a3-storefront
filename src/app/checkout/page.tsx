@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Checkbox } from "~/components/ui/checkbox"
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Checkbox } from "~/components/ui/checkbox";
 
 export default function CheckoutPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [guestEmail, setGuestEmail] = useState("")
-  const [receiveEmails, setReceiveEmails] = useState(true)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
+  const [receiveEmails, setReceiveEmails] = useState(true);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-6">
+    <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row">
       {/* Left Column - Checkout Options */}
       <div className="flex-1 space-y-6">
         {/* Member Checkout */}
-        <div className="border rounded-md p-6">
-          <div className="flex justify-between items-center mb-6">
+        <div className="rounded-md border p-6">
+          <div className="mb-6 flex items-center justify-between">
             <h2 className="text-xl font-medium">Member Checkout</h2>
             <Link href="#" className="text-sm underline">
               Create Account
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
               <input
                 type="text"
                 placeholder="Email or Username"
-                className="w-full border rounded-md p-3"
+                className="w-full rounded-md border p-3"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -38,14 +38,18 @@ export default function CheckoutPage() {
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full border rounded-md p-3"
+                className="w-full rounded-md border p-3"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sm underline">Forgot</button>
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-sm underline">
+                Forgot
+              </button>
             </div>
-            <button className="w-full bg-black text-white py-3 rounded-md">Log In</button>
-            <div className="text-sm text-center">
+            <button className="w-full rounded-md bg-black py-3 text-white">
+              Log In
+            </button>
+            <div className="text-center text-sm">
               By proceeding, you agree to the{" "}
               <Link href="/privacy" className="underline">
                 Privacy Policy
@@ -60,14 +64,14 @@ export default function CheckoutPage() {
         </div>
 
         {/* Guest Checkout */}
-        <div className="border rounded-md p-6">
-          <h2 className="text-xl font-medium mb-6">Guest Checkout</h2>
+        <div className="rounded-md border p-6">
+          <h2 className="mb-6 text-xl font-medium">Guest Checkout</h2>
           <div className="space-y-4">
             <div>
               <input
                 type="email"
                 placeholder="Email Address"
-                className="w-full border rounded-md p-3"
+                className="w-full rounded-md border p-3"
                 value={guestEmail}
                 onChange={(e) => setGuestEmail(e.target.value)}
               />
@@ -76,22 +80,27 @@ export default function CheckoutPage() {
               <Checkbox
                 id="emails"
                 checked={receiveEmails}
-                onCheckedChange={(checked) => setReceiveEmails(!!checked)}
+                onCheckedChange={(checked: boolean | "indeterminate") =>
+                  setReceiveEmails(!!checked)
+                }
                 className="mt-1"
               />
               <label htmlFor="emails" className="text-sm">
-                I would like to receive emails with exclusive promotions, popular releases, and more
+                I would like to receive emails with exclusive promotions,
+                popular releases, and more
               </label>
             </div>
-            <button className="w-full bg-black text-white py-3 rounded-md">Checkout as Guest</button>
+            <button className="w-full rounded-md bg-black py-3 text-white">
+              Checkout as Guest
+            </button>
           </div>
         </div>
       </div>
 
       {/* Right Column - Order Summary */}
       <div className="md:w-[400px]">
-        <div className="border rounded-md p-6">
-          <div className="flex justify-between items-center mb-4">
+        <div className="rounded-md border p-6">
+          <div className="mb-4 flex items-center justify-between">
             <h2 className="text-xl font-medium">Order Summary</h2>
           </div>
 
@@ -99,7 +108,7 @@ export default function CheckoutPage() {
             <div className="flex flex-col gap-4">
               <div className="text-lg font-medium">Product Name</div>
               <div className="flex gap-4">
-                <div className="w-20 h-16 relative">
+                <div className="relative h-16 w-20">
                   <Image
                     src="/placeholder.svg?height=64&width=80"
                     alt="Product Name"
@@ -108,7 +117,7 @@ export default function CheckoutPage() {
                     className="object-contain"
                   />
                 </div>
-                <div className="text-sm space-y-1">
+                <div className="space-y-1 text-sm">
                   <div>
                     <span className="font-medium">Size:</span> US Men&apos;s 5.5
                   </div>
@@ -122,7 +131,7 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="border-t pt-4 space-y-2">
+            <div className="space-y-2 border-t pt-4">
               <div className="flex justify-between">
                 <span>Item Subtotal</span>
                 <span className="font-medium">$198</span>
@@ -137,7 +146,7 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="bg-gray-200 -mx-6 px-6 py-3 mt-4">
+            <div className="-mx-6 mt-4 bg-gray-200 px-6 py-3">
               <div className="flex justify-between font-medium">
                 <span>Total</span>
                 <span>$212.75</span>
@@ -146,7 +155,7 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="mt-4 text-right space-y-2 text-sm">
+        <div className="mt-4 space-y-2 text-right text-sm">
           <div>
             <Link href="#" className="underline">
               Buyer Protection Policy
@@ -165,5 +174,5 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
