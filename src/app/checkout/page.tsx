@@ -55,13 +55,13 @@ export default function CheckoutPage() {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <p>Member Checkout</p>
-                  <Button
+                    <Button
                     variant="link"
                     className="h-0 p-0 underline underline-offset-1"
                     onClick={() => setActiveTab("create")}
-                  >
+                    >
                     Create Account
-                  </Button>
+                    </Button>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -104,17 +104,17 @@ export default function CheckoutPage() {
                                 </Button>
                               </AlertDialogTitle>
                               <AlertDialogDescription>
-                                <p className="mb-8">
+                                <span>
                                   Enter the email address associated with your
                                   account and we&apos;ll send you a link to
                                   reset your password.
-                                </p>
+                                </span>
                                 <Input
                                   type="email"
                                   placeholder="Email"
                                   value={email}
                                   onChange={(e) => setEmail(e.target.value)}
-                                  className=""
+                                  className="mt-8"
                                 />
                               </AlertDialogDescription>
                             </AlertDialogHeader>
@@ -131,7 +131,7 @@ export default function CheckoutPage() {
                 </form>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button className="w-full">Log In</Button>
+                <Button className="w-full rounded-none">Log In</Button>
                 <div className="text-center text-xs">
                   By proceeding, you agree to the{" "}
                   <Link href="/privacy" className="underline">
@@ -210,7 +210,7 @@ export default function CheckoutPage() {
                 </form>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button className="w-full">Create Account</Button>
+                <Button className="w-full rounded-none">Create Account</Button>
                 <div className="text-center text-xs">
                   By proceeding, you agree to the{" "}
                   <Link href="/privacy" className="underline">
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
             </form>
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
-            <Button className="w-full">Checkout as Guest</Button>
+            <Button className="w-full rounded-none">Checkout as Guest</Button>
           </CardFooter>
         </Card>
       </div>
