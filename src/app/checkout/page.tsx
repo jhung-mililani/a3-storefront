@@ -289,7 +289,8 @@ export default function CheckoutPage() {
                       height={64}
                       className="m-auto block max-w-[100%] object-contain"
                       priority
-                      placeholder="blur"
+                      // enable placeholder when image is not svg
+                      // placeholder="blur"
                     />
                   </div>
                   <div className="mr-8 flex min-w-[13em] flex-col justify-center text-sm">
@@ -321,7 +322,8 @@ export default function CheckoutPage() {
                       height={64}
                       className="m-auto block max-w-[100%] object-contain"
                       priority
-                      placeholder="blur"
+                      // enable placeholder when image is not svg
+                      // placeholder="blur"
                     />
                   </div>
                   <div className="mr-8 flex min-w-[13em] flex-col justify-center text-sm">
