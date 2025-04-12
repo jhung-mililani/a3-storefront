@@ -355,7 +355,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="mt-6 flex items-center justify-between bg-gray-200 px-4 py-3">
+              <CardFooter className="mt-6 flex items-center justify-between bg-[rgba(0,0,0,0.3)] px-4 py-3">
                 <span className="font-bold">Total</span>
                 <span className="font-bold">$220.75</span>
               </CardFooter>
