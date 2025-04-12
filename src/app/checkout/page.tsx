@@ -24,7 +24,7 @@ import {
 } from "~/components/ui/card";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Input } from "~/components/ui/input";
-import { Tabs, TabsContent, } from "~/components/ui/tabs";
+import { Tabs, TabsContent } from "~/components/ui/tabs";
 
 export default function CheckoutPage() {
   // state variable to manage the active tab
@@ -55,13 +55,13 @@ export default function CheckoutPage() {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <p>Member Checkout</p>
-                    <Button
+                  <Button
                     variant="link"
                     className="h-0 p-0 underline underline-offset-1"
                     onClick={() => setActiveTab("create")}
-                    >
+                  >
                     Create Account
-                    </Button>
+                  </Button>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -288,6 +288,8 @@ export default function CheckoutPage() {
                       width={64}
                       height={64}
                       className="m-auto block max-w-[100%] object-contain"
+                      priority
+                      placeholder="blur"
                     />
                   </div>
                   <div className="mr-8 flex min-w-[13em] flex-col justify-center text-sm">
@@ -318,6 +320,8 @@ export default function CheckoutPage() {
                       width={64}
                       height={64}
                       className="m-auto block max-w-[100%] object-contain"
+                      priority
+                      placeholder="blur"
                     />
                   </div>
                   <div className="mr-8 flex min-w-[13em] flex-col justify-center text-sm">
