@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Menu, ShoppingCart, User } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "~/components/ui/sheet";
