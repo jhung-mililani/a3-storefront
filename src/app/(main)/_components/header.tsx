@@ -2,11 +2,25 @@
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "~/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetClose,
+  SheetTitle,
+  SheetTrigger,
+} from "~/components/ui/sheet";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
-export default async function Header() {
+type HeaderProps = {
+  showCart?: boolean;
+  linkLogo?: boolean;
+};
+
+export default async function Header({
+  showCart = true,
+  linkLogo = true,
+}: HeaderProps) {
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const [cartCount, setCartCount] = useState(3);
   const cartCount = 3;
@@ -30,6 +44,7 @@ export default async function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <SheetTitle>Menu</SheetTitle>
                 <nav className="mt-8 flex flex-col gap-4">
                   <Link href="#featured" className="text-lg font-medium">
                     Featured
@@ -61,7 +76,7 @@ export default async function Header() {
           {/* center section (logo) */}
           {/* TODO: make logo smaller on small screens */}
           <div className="flex w-1/3 justify-center">
-            <Link href="/">
+            <Link href={linkLogo ? "/" : "#"} className="flex items-center">
               <div className="h-5 overflow-hidden font-bold">
                 <div className="relative bottom-1 transition-[bottom] duration-200 hover:bottom-[21px]">
                   <div className="text-xl italic">Brave Graves.</div>
@@ -76,7 +91,11 @@ export default async function Header() {
           <div className="flex w-1/3 items-center justify-end gap-4">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={showCart ? "relative" : "hidden"}
+                >
                   <ShoppingCart className="h-5 w-5" />
                   {cartCount > 0 && (
                     <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
@@ -88,7 +107,7 @@ export default async function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex h-full flex-col">
-                  <h2 className="mb-4 text-lg font-semibold">Your Cart</h2>
+                  <SheetTitle className="mb-4">Your Cart</SheetTitle>
                   <div className="flex-1">
                     {cartCount > 0 ? (
                       <div className="space-y-4">
@@ -107,7 +126,9 @@ export default async function Header() {
                         ))}
                       </div>
                     ) : (
-                      <p className="text-muted-foreground">Your cart is empty</p>
+                      <p className="text-muted-foreground">
+                        Your cart is empty
+                      </p>
                     )}
                   </div>
                   <div className="mt-4 border-t pt-4">
@@ -132,17 +153,19 @@ export default async function Header() {
                 <span className="sr-only">Account</span>
               </Button>
             </Link> */}
-            <Button asChild variant={"link"} className="underline-offset-8 p-0">
-              <Link
-                href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              >
-                <span className="uppercase">{session ? "Log out" : "Log in"}</span>
+            <Button asChild variant={"link"} className="p-0 underline-offset-8">
+              <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
+                <span className="uppercase">
+                  {session ? "Log out" : "Log in"}
+                </span>
               </Link>
             </Button>
-            <Button asChild variant={"link"} className={session ? "underline-offset-8 p-0" : "hidden"}>
-              <Link
-                href="/account"
-              >
+            <Button
+              asChild
+              variant={"link"}
+              className={session ? "p-0 underline-offset-8" : "hidden"}
+            >
+              <Link href="/account">
                 <span className="uppercase">Account</span>
               </Link>
             </Button>
