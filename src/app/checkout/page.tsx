@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { Login } from "~/components/auth/login";
-import { Button } from "~/components/ui/button";
+import { Login } from "~/app/(auth)/_components/login";
 import {
   Card,
   CardContent,
@@ -12,60 +10,15 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Checkbox } from "~/components/ui/checkbox";
-import { Input } from "~/components/ui/input";
+import { GuestCheckout } from "./_components/guest-checkout";
 
 export default function CheckoutPage() {
-  // state variables for guest checkout
-  const [guestEmail, setGuestEmail] = useState("");
-  const [receiveEmailsGuest, setReceiveEmailsGuest] = useState(true);
-
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8 md:flex-row">
       {/* Left Column - Checkout Options */}
       <div className="flex-1 space-y-6">
         <Login loginTabTitle="Member Checkout" />
-        <Card className="border transition-colors hover:border-gray-800">
-          <CardHeader>
-            <CardTitle>Guest Checkout</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Input
-                    type="email"
-                    placeholder="Email Address"
-                    value={guestEmail}
-                    onChange={(e) => setGuestEmail(e.target.value)}
-                    className="border transition-colors hover:border-gray-800"
-                  />
-                </div>
-                <div className="items-top flex space-x-2">
-                  <Checkbox
-                    id="receiveEmailsGuest"
-                    checked={receiveEmailsGuest}
-                    onCheckedChange={(checked: boolean | "indeterminate") =>
-                      setReceiveEmailsGuest(!!checked)
-                    }
-                  />
-                  <div className="grid items-center gap-1.5 leading-none">
-                    <label
-                      htmlFor="receiveEmails"
-                      className="text-xs leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      I would like to receive emails with exclusive promotions,
-                      popular releases, and more
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-4">
-            <Button className="w-full rounded-none">Checkout as Guest</Button>
-          </CardFooter>
-        </Card>
+        <GuestCheckout />
       </div>
 
       {/* Right Column - Order Summary */}
