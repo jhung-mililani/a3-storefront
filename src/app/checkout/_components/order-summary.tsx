@@ -14,7 +14,7 @@ export default function OrderSummary() {
       id: "1",
       name: "Product 1",
       price: 222,
-      imageUrl: "/placeholder.svg?height=64&width=64",
+      imageUrl: "/placeholder.svg?height=80&width=80",
       discount: 0,
       size: "US Men's 5.5",
       itemCondition: "New",
@@ -23,9 +23,9 @@ export default function OrderSummary() {
     {
       id: "2",
       name: "Product 2",
-      price: 222,
-      imageUrl: "/placeholder.svg?height=64&width=64",
-      discount: 0,
+      price: 210,
+      imageUrl: "/placeholder.svg?height=80&width=80",
+      discount: 5,
       size: "US Men's 6.5",
       itemCondition: "Open Box",
       boxCondition: "Good Condition",
@@ -33,7 +33,7 @@ export default function OrderSummary() {
   ];
 
   // temporary flag to indicate if user has location data for shippping and tax
-  const hasLocationData = false; // set to true when location data is available
+  const hasLocationData = true; // set to true when location data is available
 
   // calculate order totals
   const calculateSubtotal = () => {
@@ -75,21 +75,45 @@ export default function OrderSummary() {
             <div className="mb-5 flex flex-col justify-center gap-2 text-sm">
               <div className="flex items-center justify-between">
                 <span>Item Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>
+                  {subtotal.toLocaleString("en-us", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Estimated Shipping</span>
-                <span>{hasLocationData ? `$${shipping.toFixed(2)}` : "—"}</span>
+                <span>
+                  {hasLocationData
+                    ? `${shipping.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}`
+                    : "—"}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Estimated Tax</span>
-                <span>{hasLocationData ? `$${tax.toFixed(2)}` : "—"}</span>
+                <span>
+                  {hasLocationData
+                    ? `${tax.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}`
+                    : "—"}
+                </span>
               </div>
             </div>
           </CardContent>
           <CardFooter className="mt-6 flex items-center justify-between bg-[rgba(0,0,0,0.3)] px-4 py-3">
             <span className="font-bold">Total</span>
-            <span className="font-bold">${total.toFixed(2)}</span>
+            <span className="font-bold">
+              {total.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </span>
           </CardFooter>
         </Card>
       </CardContent>

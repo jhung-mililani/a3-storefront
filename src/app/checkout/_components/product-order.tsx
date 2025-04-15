@@ -7,7 +7,7 @@ type ProductOrderProps = {
     name: string;
     price: number;
     imageUrl: string;
-    discount: number; 
+    discount: number; // percentage discount (i.e. 50 for 50% off)
   },
     size: string;
     itemCondition: string;
@@ -25,17 +25,17 @@ export default function ProductOrder({
       <CardTitle className="mb-4">{product.name}</CardTitle>
       <CardContent className="p-0">
         <div className="flex flex-row gap-4">
-          <div className="flex w-16 min-w-16 items-center justify-center">
+          <div className="flex w-20 min-w-20 items-center justify-center">
             <Image
               src={product.imageUrl}
               alt={product.name}
-              width={64}
-              height={64}
+              width={80}
+              height={80}
               className="m-auto block max-w-[100%] object-contain"
               priority
             />
           </div>
-          <div className="mr-8 flex min-w-[13em] flex-col justify-center text-sm">
+          <div className="flex min-w-[13em] flex-col justify-center text-sm">
             <p>
               <b>Size: </b>
               {size}
@@ -47,6 +47,21 @@ export default function ProductOrder({
             <p>
               <b>Box: </b>
               {boxCondition}
+            </p>
+            <p>
+              <b>Price: </b>
+              {product.price.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              minimumFractionDigits: product.price % 1 === 0 ? 0 : 2, // if the price is an integer, show 0 decimal places
+              maximumFractionDigits: product.price % 1 === 0 ? 0 : 2,
+              })}
+              {product.discount > 0 && (
+              <span className="text-red-500">
+                {' '}
+                -{product.discount}% off
+              </span>
+              )}
             </p>
           </div>
         </div>
