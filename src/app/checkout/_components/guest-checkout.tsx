@@ -17,7 +17,7 @@ type GuestCheckoutProps = {
   checkoutButtonText?: string;
 };
 
-export function GuestCheckout({
+export default function GuestCheckout({
   guestCheckoutTitle = "Guest Checkout",
   checkoutButtonText = "Checkout as Guest",
 }: GuestCheckoutProps) {

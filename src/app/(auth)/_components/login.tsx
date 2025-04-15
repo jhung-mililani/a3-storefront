@@ -30,7 +30,7 @@ type LoginProps = {
   createTabTitle?: string;
 };
 
-export function Login({
+export default function Login({
   loginTabTitle = "Member Login",
   createTabTitle = "Create Account",
 }: LoginProps) {
