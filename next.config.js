@@ -24,6 +24,10 @@ const config = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com", // 🔥 Google Drive (posible en algunos casos)
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      }
     ],
   },
 };
