@@ -19,3 +19,13 @@ updates:
       include: "scope"
     open-pull-requests-limit: 20
     versioning-strategy: "increase"
+    groups:
+      react-packages:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "next"
+        update-types:
+          - "minor"
+          - "patch"
+          - "major"
