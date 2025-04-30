@@ -11,6 +11,7 @@ import {
 } from "~/components/ui/sheet";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
+import { AuthButton } from "../../(auth)/_components/auth-button";
 
 type HeaderProps = {
   showCart?: boolean;
@@ -153,13 +154,19 @@ export default async function Header({
                 <span className="sr-only">Account</span>
               </Button>
             </Link> */}
-            <Button asChild variant={"link"} className="p-0 underline-offset-8">
-              <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
-                <span className="uppercase">
-                  {session ? "Log out" : "Log in"}
-                </span>
-              </Link>
-            </Button>
+            <AuthButton session={session}>
+              <Button
+                asChild
+                variant={"link"}
+                className="p-0 underline-offset-8"
+              >
+                <Link href="#">
+                  <span className="uppercase">
+                    {session ? "Log out" : "Log in"}
+                  </span>
+                </Link>
+              </Button>
+            </AuthButton>
             <Button
               asChild
               variant={"link"}
