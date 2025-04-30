@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LoginButtons } from "~/app/_components/LoginButtons";
 
 import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/server/auth";
@@ -56,6 +57,7 @@ export default async function Home() {
               >
                 {session ? "Sign out" : "Sign in"}
               </Link>
+              {!session && <LoginButtons />}
             </div>
           </div>
 

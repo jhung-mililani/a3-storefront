@@ -1,6 +1,8 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
+import Apple from "next-auth/providers/apple"; // Import Apple provider
+import Discord from "next-auth/providers/discord"; // Import Discord provider
 
 import { db } from "~/server/db";
 
@@ -33,6 +35,14 @@ declare module "next-auth" {
 export const authConfig = {
   providers: [
     Google,
+    Apple({
+      clientId: process.env.APPLE_CLIENT_ID!,
+      clientSecret: process.env.APPLE_CLIENT_SECRET!,
+    }),
+    Discord({
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+    }),
   ],
   adapter: PrismaAdapter(db),
   callbacks: {
